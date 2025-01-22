@@ -2,32 +2,42 @@ import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
 
 const typeDefs = `#graphql
+type Product  {
+  id: ID!
+  name: String
+  category: String
+  price: Float
+  stock: Float
+  description: String
+}
 
-  type Book {
-    title: String
-    author: String
-  }
-
-
-  type Query {
-    books: [Book]
+  type Query  {
+    products: [Product]
   }
 `;
 
-const books = [
+const products = [
     {
-        title: 'The Awakening',
-        author: 'Kate Chopin',
+        "id": 1,
+        "name": "Wireless Mouse",
+        "category": "Electronics",
+        "price": 25.99,
+        "stock": 150,
+        "description": "Ergonomic wireless mouse with adjustable DPI settings."
     },
     {
-        title: 'City of Glass',
-        author: 'Paul Auster',
+        "id": 2,
+        "name": "Bluetooth Speaker",
+        "category": "Electronics",
+        "price": 45.99,
+        "stock": 75,
+        "description": "Portable Bluetooth speaker with 10-hour battery life."
     },
-];
+]
 
 const resolvers = {
     Query: {
-        books: () => books,
+        products: () => products
     },
 };
 
