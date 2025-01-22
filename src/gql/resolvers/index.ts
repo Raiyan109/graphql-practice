@@ -17,11 +17,29 @@ const products = [
     },
 ]
 
+const categories = [
+    {
+        "id": 1,
+        "name": "Electronics",
+        "description": "Devices and gadgets including phones, laptops, and accessories."
+    },
+    {
+        "id": 2,
+        "name": "Gaming",
+        "description": "Gaming consoles, accessories, and related merchandise."
+    },
+]
+
 export const resolvers = {
     Query: {
         products: () => products,
         product: (parent: any, args: { productId: string }, context: any) => {
             const result = products.find(product => product.id === Number(args.productId))
+            return result
+        },
+        categories: () => categories,
+        category: (parent: any, args: { categoryId: string }, context: any) => {
+            const result = categories.find(category => category.id === Number(args.categoryId))
             return result
         }
     },

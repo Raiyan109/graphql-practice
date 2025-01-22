@@ -16,11 +16,28 @@ const products = [
         "description": "Portable Bluetooth speaker with 10-hour battery life."
     },
 ];
+const categories = [
+    {
+        "id": 1,
+        "name": "Electronics",
+        "description": "Devices and gadgets including phones, laptops, and accessories."
+    },
+    {
+        "id": 2,
+        "name": "Gaming",
+        "description": "Gaming consoles, accessories, and related merchandise."
+    },
+];
 export const resolvers = {
     Query: {
         products: () => products,
         product: (parent, args, context) => {
             const result = products.find(product => product.id === Number(args.productId));
+            return result;
+        },
+        categories: () => categories,
+        category: (parent, args, context) => {
+            const result = categories.find(category => category.id === Number(args.categoryId));
             return result;
         }
     },
