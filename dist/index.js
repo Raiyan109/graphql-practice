@@ -12,6 +12,7 @@ type Product  {
 
   type Query  {
     products: [Product]
+    product(productId: ID!): Product
   }
 `;
 const products = [
@@ -34,7 +35,11 @@ const products = [
 ];
 const resolvers = {
     Query: {
-        products: () => products
+        products: () => products,
+        product: (parent, args, context) => {
+            const result = products.find(product => product.id === Number(args.productId));
+            return result;
+        }
     },
 };
 const server = new ApolloServer({

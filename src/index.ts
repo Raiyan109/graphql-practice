@@ -13,6 +13,7 @@ type Product  {
 
   type Query  {
     products: [Product]
+    product(productId: ID!): Product
   }
 `;
 
@@ -37,7 +38,11 @@ const products = [
 
 const resolvers = {
     Query: {
-        products: () => products
+        products: () => products,
+        product: (parent: any, args: { productId: string }, context: any) => {
+            const result = products.find(product => product.id === Number(args.productId))
+            return result
+        }
     },
 };
 
