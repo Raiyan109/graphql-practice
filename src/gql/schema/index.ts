@@ -2,7 +2,7 @@ export const typeDefs = `#graphql
     type Product  {
         id: ID!
         name: String
-        category: String
+        category: Category
         price: Float
         stock: Float
         description: String
