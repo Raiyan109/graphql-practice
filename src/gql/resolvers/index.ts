@@ -95,7 +95,7 @@ export const resolvers = {
             const result = categories.find((category) => category.id === parent.categoryId)
             return result
         },
-        reviews: (parent, args, context) => {
+        reviews: (parent: any, args: any, context: any) => {
             return reviews.filter(review => review.productId === parent.id)
         }
     },
