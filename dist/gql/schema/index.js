@@ -6,11 +6,21 @@ export const typeDefs = `#graphql
         price: Float
         stock: Float
         description: String
+        reviews: [Review]
     }
 
     type Category {
         id: ID!
         name: String
+        products: [Product]
+    }
+
+    type Review {
+        id: ID!
+        review: String
+        rating: Int
+        date: String
+        productId: String
     }
 
   type Query  {
